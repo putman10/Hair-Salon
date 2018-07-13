@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56D8D7D2-B0F8-4BCC-9F8F-19D1A1C32A01}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		ryan_putman_test.sql = ryan_putman_test.sql
+		ryan_putman.sql = ryan_putman.sql
 	EndProjectSection
 EndProject
 Global
