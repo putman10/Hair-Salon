@@ -12,10 +12,6 @@ namespace HairSalon
 {
     public class Startup
     {
-        public static class DBConfiguration
-        {
-            public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=ryan_putman;";
-        }
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -60,5 +56,11 @@ namespace HairSalon
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+    }
+
+    public static class DBConfiguration
+    {
+        public static string ConnectionString = "server=localhost;user id=root;password=root;port=3306;database=ryan_putman;";
     }
 }

@@ -20,7 +20,7 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists/{id}")]
         public ActionResult AllStylists()
         {
-            List<Stylist> model = StylistController.GetAll();
+            List<Stylist> model = Stylist.GetAll();
             return View(model);
         }
 
@@ -34,7 +34,7 @@ namespace HairSalon.Controllers
         public ActionResult AddStylist(string stylistName)
         {
             Stylist newStylist = new Stylist(stylistName);
-            List<Stylist> allStylists = StylistController.GetAll();
+            List<Stylist> allStylists = Stylist.GetAll();
             return View(allStylists);
         }
 
