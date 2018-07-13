@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MySql.Data.MySqlClient;
+using HairSalon.Controllers;
 
 namespace HairSalon.Models
 {
