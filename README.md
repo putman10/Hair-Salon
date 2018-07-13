@@ -11,14 +11,11 @@ Create an app for a hair salon. The owner should be able to add a list of the st
 ## Specs
 
 | Behavior | Input | Output |
-|----------|-------|--------|
 | As a salon employee, I need to be able to see a list of all our stylists. | click on view all stylists | list of stylists |
-|----------|-------|--------|
 | As an employee, I need to be able to select a stylist, see their details, and see a list of all clients that belong to that stylist. | click on stylist name | view contact details and all clients |
-|----------|-------|--------|
 | As an employee, I need to add new stylists to our system when they are hired. | fill out form and submit | new stylist is added to the database and viewable in stylist list |
-|----------|-------|--------|
 | As an employee, I need to be able to add new clients to a specific stylist. I should not be able to add a client if no stylists have been added | add new clients | client assigned stylist if stylists exist |
+| Client can be deleted from the system | delete client | click on delete button |
 
 
 ## Setup on OSX
@@ -32,6 +29,7 @@ Create an app for a hair salon. The owner should be able to add a list of the st
 * Run `dotnet build` from project directory and fix any build errors
 * Run `dotnet test` from the test directory to run the testing suite
 * Run `dotnet run` to start the server
+* Navigate to localhost supplied in browser of choice
 
 ## Contribution Requirements
 
