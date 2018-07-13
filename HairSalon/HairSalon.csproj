@@ -46,6 +46,6 @@
     <None Include="Views\Stylist\AddForm.cshtml" />
     <None Include="Views\Stylist\Index.cshtml" />
     <None Include="Views\Stylist\Search.cshtml" />
-    <None Include="Views\Stylist\Update.cshtml" />
+    <None Include="Views\Stylist\EditForm.cshtml" />
   </ItemGroup>
 </Project>

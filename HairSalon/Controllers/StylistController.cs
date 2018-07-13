@@ -14,14 +14,22 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists")]
         public ActionResult Index()
         {
-            return View();
+            List<Stylist> model = Stylist.GetAll();
+            return View(model);
         }
 
         [HttpGet("/stylists/{id}")]
-        public ActionResult AllStylists()
+        public ActionResult AllStylists(int id)
         {
-            List<Stylist> model = Stylist.GetAll();
-            return View("Index", model);
+            Stylist thisStylist = Stylist.Find(id);
+            return View("Index", thisStylist);
+        }
+
+        [HttpPost("/stylists/{id}/delete")]
+        public ActionResult DeleteStylist(int id)
+        {
+            Stylist.DeleteStylist(id);
+            return RedirectToAction("Index");
         }
 
         [HttpGet("/stylists/new")]
@@ -30,12 +38,28 @@ namespace HairSalon.Controllers
             return View();
         }
 
-        [HttpPost("/stylists")]
-        public ActionResult AddStylist(string stylistName)
+        [HttpPost("/stylists/new")]
+        public ActionResult AddStylist(string name, int id)
         {
-            Stylist newStylist = new Stylist(stylistName);
-            List<Stylist> allStylists = Stylist.GetAll();
-            return View(allStylists);
+            id = 0;
+            Stylist newStylist = new Stylist(name, id);
+            newStylist.Save();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("/stylists/{id}/edit")]
+        public ActionResult EditForm(int id)
+        {
+            Stylist thisStylist = Stylist.Find(id);
+            return View(thisStylist);
+        }
+
+        [HttpPost("/stylists/{id}/edit")]
+        public ActionResult EditStylist(int id, string newname)
+        {
+            Stylist thisStylist = Stylist.Find(id);
+            thisStylist.Edit(newname);
+            return RedirectToAction("Index");
         }
 
 

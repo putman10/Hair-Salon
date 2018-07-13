@@ -1,15 +1,12 @@
 ﻿@{
     Layout = "_Layout";
 }
- <div class='container' id="category-container"=>
-        <h1>All Categories</h1>
-
+ <div class='container' id="stylist-container"=>
+        <h1>All Stylists</h1>
+     
     <div class="row titles"=>
-        <div class="col-md-5">
-            <h4>Category Name</h4>
-        </div>
-         <div class="col-md-3">
-            <h4>Category Id</h4>
+        <div class="col-md-8">
+            <h4>Stylist Name</h4>
         </div>
          <div class="col-md-2">
             <h4>Edit</h4>
@@ -18,20 +15,17 @@
             <h4>Delete</h4>
         </div>
     </div>
-        @foreach(var category in Model)
+        @foreach(var stylist in Model)
         {
         <div class="row data">
-        <div class="col-md-5">
-            <p class="name">@category.GetName()</p>
-        </div>
-         <div class="col-md-3">
-            <p>@category.GetId()</p>
+        <div class="col-md-8">
+            <p class="name"><a href="/stylists/@stylist.GetId()">@stylist.GetName()</a></p>
         </div>
          <div class="col-md-2">
-            <p><a class="btn btn-danger" href="/category/all/@category.GetId()/update">Edit</a></p>
+            <p><a class="btn btn-danger" href="/stylists/@stylist.GetId()/edit">Edit</a></p>
         </div>
          <div class="col-md-2">
-            <p><form id="category" action="/category/all/@category.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form></p>
+            <form id="stylist" action="/stylists/@stylist.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
         </div>
     </div>
         }
