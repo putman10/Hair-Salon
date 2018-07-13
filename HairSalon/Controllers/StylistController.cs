@@ -54,8 +54,12 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists/{id}/edit")]
         public ActionResult EditForm(int id)
         {
+            Dictionary<string, object> model = new Dictionary<string, object>();
             Stylist thisStylist = Stylist.Find(id);
-            return View(thisStylist);
+            List<Client> stylistClients = thisStylist.GetClients();
+            model.Add("stylist", thisStylist);
+            model.Add("clients", stylistClients);
+            return View(model);
         }
 
         [HttpPost("/stylists/{id}/edit")]
@@ -65,7 +69,5 @@ namespace HairSalon.Controllers
             thisStylist.Edit(newName);
             return RedirectToAction("Index");
         }
-
-
     }
 }

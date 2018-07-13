@@ -16,7 +16,25 @@ select,
 textarea {
     max-width: 280px;
 }
+#myCarousel {
+    height: 500px;
+    overflow: hidden;
+}
 
+#home-buttons {
+    width: 95%;
+}
+
+#home-title {
+    background: #010f30;
+    padding: 2rem 0;
+    color: white;
+    margin-top: 0px;
+}
+
+#home-container {
+    text-align:center;
+}
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;

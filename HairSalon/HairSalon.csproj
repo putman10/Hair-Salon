@@ -30,6 +30,10 @@
     <Content Remove="Views\Client\Details.cshtml" />
     <Content Remove="Views\Client\EditForm.cshtml" />
     <Content Remove="Views\Client\Index.cshtml" />
+    <Content Remove="wwwroot\images\banner_1.jpg" />
+    <Content Remove="wwwroot\images\banner_4.jpg" />
+    <Content Remove="wwwroot\images\banner_3.jpg" />
+    <Content Remove="wwwroot\images\banner_2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
@@ -48,5 +52,9 @@
     <None Include="Views\Client\Details.cshtml" />
     <None Include="Views\Client\EditForm.cshtml" />
     <None Include="Views\Client\Index.cshtml" />
+    <None Include="wwwroot\images\banner_1.jpg" />
+    <None Include="wwwroot\images\banner_4.jpg" />
+    <None Include="wwwroot\images\banner_3.jpg" />
+    <None Include="wwwroot\images\banner_2.jpg" />
   </ItemGroup>
 </Project>
