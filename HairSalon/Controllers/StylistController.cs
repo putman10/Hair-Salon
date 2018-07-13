@@ -26,7 +26,7 @@ namespace HairSalon.Controllers
             List<Client> stylistClients = selectedStylist.GetClients();
             model.Add("stylist", selectedStylist);
             model.Add("clients", stylistClients);
-            return View(stylistClients);
+            return View(model);
         }
 
         [HttpPost("/stylists/{id}/delete")]
