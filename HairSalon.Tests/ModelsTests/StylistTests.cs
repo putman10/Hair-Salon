@@ -34,8 +34,8 @@ namespace HairSalon.Tests.ModelsTests
         public void Equals_ReturnsTrueForSameName_Stylist()
         {
             //Arrange, Act
-            Stylist firstStylist = new Stylist("vegetables");
-            Stylist secondStylist = new Stylist("vegetables");
+            Stylist firstStylist = new Stylist("Rook Tyler");
+            Stylist secondStylist = new Stylist("Rook Tyler");
 
             //Assert
             Assert.AreEqual(firstStylist, secondStylist);
@@ -45,7 +45,7 @@ namespace HairSalon.Tests.ModelsTests
         public void Save_SavesStylistToDatabase_StylistList()
         {
             //Arrange
-            Stylist testStylist = new Stylist("vegetables");
+            Stylist testStylist = new Stylist("Rook Tyler");
             testStylist.Save();
 
             //Act
@@ -61,7 +61,7 @@ namespace HairSalon.Tests.ModelsTests
         public void Save_DatabaseAssignsIdToStylist_Id()
         {
             //Arrange
-            Stylist testStylist = new Stylist("vegetables");
+            Stylist testStylist = new Stylist("Rook Tyler");
             testStylist.Save();
 
             //Act
@@ -78,7 +78,7 @@ namespace HairSalon.Tests.ModelsTests
         public void Find_FindsStylistInDatabase_Stylist()
         {
             //Arrange
-            Stylist testStylist = new Stylist("vegetables");
+            Stylist testStylist = new Stylist("Rook Tyler");
             testStylist.Save();
 
             //Act
@@ -91,13 +91,13 @@ namespace HairSalon.Tests.ModelsTests
         [TestMethod]
         public void GetClients_RetrievesAllClientsWithStylist_ClientList()
         {
-            Stylist testStylist = new Stylist("vegetables");
+            Stylist testStylist = new Stylist("Rook Tyler");
             testStylist.Save();
             int id = 0;
 
-            Client firstClient = new Client(id, testStylist.GetId(), "kale");
+            Client firstClient = new Client(id, testStylist.GetId(), "Janet Jackson");
             firstClient.Save();
-            Client secondClient = new Client(id, testStylist.GetId(), "zucchini");
+            Client secondClient = new Client(id, testStylist.GetId(), "Jennifer Lopez");
             secondClient.Save();
 
 
