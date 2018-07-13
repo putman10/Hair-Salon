@@ -19,10 +19,14 @@ namespace HairSalon.Controllers
         }
 
         [HttpGet("/stylists/{id}")]
-        public ActionResult AllStylists(int id)
+        public ActionResult Details(int id)
         {
-            Stylist thisStylist = Stylist.Find(id);
-            return View("Index", thisStylist);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Stylist selectedStylist = Stylist.Find(id);
+            List<Client> stylistClients = selectedStylist.GetClients();
+            model.Add("stylist", selectedStylist);
+            model.Add("clients", stylistClients);
+            return View(model);
         }
 
         [HttpPost("/stylists/{id}/delete")]
