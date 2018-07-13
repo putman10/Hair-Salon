@@ -75,7 +75,7 @@ namespace HairSalon.Controllers
         public ActionResult EditForm(int id)
         {
             Dictionary<object, object> model = new Dictionary<object, object>();
-            Client allStylists = Stylist.GetAll();
+            List<Stylist> allStylists = Stylist.GetAll();
             Client thisClient = Client.Find(id);
             model.Add("stylists", allStylists);
             model.Add("client", thisClient);
