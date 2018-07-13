@@ -109,7 +109,7 @@ namespace HairSalon.Tests.ModelsTests
             string secondName = "Jennifer Lopez";
 
             //Act
-            testClient.Edit(secondName);
+            testClient.Edit(secondName, 1);
 
             string result = Client.Find(testClient.GetId()).GetName();
 

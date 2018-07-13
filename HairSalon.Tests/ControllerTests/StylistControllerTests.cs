@@ -14,9 +14,9 @@ namespace HairSalon.Tests.ControllerTests
         {
             Stylist.DeleteAll();
         }
-
+ 
         [TestMethod]
-        public void All_ReturnsCorrectView_True()
+        public void Index_ReturnsCorrectView_True()
         {
             StylistController controller = new StylistController();
             ActionResult allView = controller.Index();
@@ -24,19 +24,44 @@ namespace HairSalon.Tests.ControllerTests
         }
 
         [TestMethod]
-        public void Results_HasCorrectModelType_Stylist()
+        public void Details_ReturnsCorrectView_True()
         {
-            ViewResult resultsView = new StylistController().AllStylists(1) as ViewResult;
-            var result = resultsView.ViewData.Model;
-            Assert.IsInstanceOfType(result, typeof(List<Stylist>));
+            StylistController controller = new StylistController();
+            ActionResult allView = controller.Details(1);
+            Assert.IsInstanceOfType(allView, typeof(ViewResult));
         }
 
         [TestMethod]
-        public void Add_ReturnsCorrectView_True()
+        public void Details_HasCorrectModelType_Dictionary()
+        {
+            ViewResult resultsView = new StylistController().Details(3) as ViewResult;
+            var result = resultsView.ViewData.Model;
+            Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
+        }
+
+        [TestMethod]
+        public void AddForm_ReturnsCorrectView_True()
         {
             StylistController controller = new StylistController();
-            ActionResult addView = controller.AddForm("apple", 1);
-            Assert.IsInstanceOfType(addView, typeof(RedirectToActionResult));
+            ActionResult allView = controller.AddForm();
+            Assert.IsInstanceOfType(allView, typeof(ViewResult));
         }
+
+        [TestMethod]
+        public void EditForm_ReturnsCorrectView_True()
+        {
+            StylistController controller = new StylistController();
+            ActionResult allView = controller.EditForm(1);
+            Assert.IsInstanceOfType(allView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void EditForm_HasCorrectModelType_Dictionary()
+        {
+            ViewResult resultsView = new StylistController().EditForm(3) as ViewResult;
+            var result = resultsView.ViewData.Model;
+            Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
+        }
+
     }
 }
