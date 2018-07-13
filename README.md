@@ -12,7 +12,7 @@ Create an app for a hair salon. The owner should be able to add a list of the st
 
 | Behavior | Input | Output |
 |----------|-------|--------|
-| As a salon employee, I need to be able to see a list of all our stylists. | list of stylists |
+| As a salon employee, I need to be able to see a list of all our stylists. | click on view all stylists | list of stylists |
 |----------|-------|--------|
 | As an employee, I need to be able to select a stylist, see their details, and see a list of all clients that belong to that stylist. | click on stylist name | view contact details and all clients |
 |----------|-------|--------|
