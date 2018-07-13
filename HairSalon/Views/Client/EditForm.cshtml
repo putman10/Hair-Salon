@@ -4,7 +4,7 @@
 <h1>Client</h1>
 <hr />
 <h2>Edit Client: @Model["client"].GetName()</h2>
-<form action="/clients/@Model["client"].GetId()/edit" method="post">
+<form class="edit-client " action="/clients/@Model["client"].GetId()/edit" method="post">
     <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" name="newname" value="@Model["client"].GetName()">
@@ -13,10 +13,11 @@
         <label for="stylist">Choose New Stylist:</label>
         <select class="form-group" name="stylist">
             @foreach (var stylist in Model["stylists"])
-        {
-            <option value="@stylist.GetId()">@stylist.GetName()</option>
-        }
+            {
+                <option value="@stylist.GetId()">@stylist.GetName()</option>
+            }
         </select>
     </div>
-        <button class="btn btn-danger" type="submit">Save Edits</button>
+    <button class="btn btn-danger" type="submit">Save Edits</button>
 </form>
+<form class="inline-block" action="/clients/@Model["client"].GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
