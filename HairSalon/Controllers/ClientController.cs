@@ -83,11 +83,11 @@ namespace HairSalon.Controllers
         }
 
         [HttpPost("/Clients/{id}/edit")]
-        public ActionResult EditClient(int id, string newname)
+        public ActionResult EditClient(int id, string newName, int stylist)
         {
             Client thisClient = Client.Find(id);
-            thisClient.Edit(newname);
-            return RedirectToAction("Index");
+            thisClient.Edit(newName, stylist);
+            return RedirectToAction("Details");
         }
 
 
