@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2018 at 11:10 PM
+-- Generation Time: Jul 13, 2018 at 11:15 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `ryan_putman_test`
 --
+CREATE DATABASE IF NOT EXISTS `ryan_putman_test` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `ryan_putman_test`;
 
 -- --------------------------------------------------------
 
