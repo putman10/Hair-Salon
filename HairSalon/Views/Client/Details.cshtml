@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "_Layout";
+}
+<div class='container' id="stylist-container" =>  
+    <div class="client-details">
+        <h1>Customer: @Model["client"].GetName()</h1>
+            <p class="inline-block"><a class="btn btn-danger" href="/clients/@Model["client"].GetId()/edit">Edit</a></p>
+            <form class="inline-block" action="/client/@Model["client"].GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
+            <p>Current Stylist Name: <a href="/stylists/@Model["stylist"].GetId()">@Model["stylist"].GetName()</a></p>
+    </div>
+</div>

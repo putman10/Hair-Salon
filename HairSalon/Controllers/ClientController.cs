@@ -14,19 +14,30 @@ namespace HairSalon.Controllers
         [HttpGet("/clients")]
         public ActionResult Index()
         {
-            return View();
+            List<Client> model = Client.GetAll();
+            return View(model);
         }
 
         [HttpGet("/stylists/{stylistId}/clients/{clientId}")]
         public ActionResult ClientByStylist(int stylistId, int clientId)
         {
-            return View();
+            Dictionary<object, object> model = new Dictionary<object, object>();
+            Stylist selectedStylist = Stylist.Find(stylistId);
+            Client selectedClient = Client.Find(clientId);
+            model.Add("stylist", selectedStylist);
+            model.Add("client", selectedClient);
+            return View("Details", model);
         }
 
         [HttpGet("/clients/{id}")]
         public ActionResult Details(int id)
         {
-            Client model = Client.Find(id);
+            Dictionary<object, object> model = new Dictionary<object, object>();
+            Client selectedClient = Client.Find(id);
+            int stylistId = selectedClient.GetStylistId();
+            Stylist selectedStylist = Stylist.Find(stylistId);
+            model.Add("stylist", selectedStylist);
+            model.Add("client", selectedClient);
             return View(model);
         }
 
@@ -37,10 +48,20 @@ namespace HairSalon.Controllers
             return View(model);
         }
 
-        [HttpPost("/clients")]
-        public ActionResult AddClient()
+        [HttpGet("/clients/new")]
+        public ActionResult AddForm()
         {
-            return View();
+            List<Stylist> results = Stylist.GetAll();
+            return View(results);;
+        }
+
+        [HttpPost("/clients/new")]
+        public ActionResult AddClient(int stylist, string name)
+        {
+            int id = 0;
+            Client newClient = new Client(id, stylist, name);
+            newClient.Save();
+            return RedirectToAction("Index");
         }
 
 
