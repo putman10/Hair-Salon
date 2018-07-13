@@ -46,5 +46,69 @@ namespace HairSalon.Tests.ControllerTests
             var result = resultsView.ViewData.Model;
             Assert.IsInstanceOfType(result, typeof(Dictionary<object, object>));
         }
+
+        [TestMethod]
+        public void Details_ReturnsCorrectView_True()
+        {
+            ClientController controller = new ClientController();
+            ActionResult allView = controller.Details(1);
+            Assert.IsInstanceOfType(allView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void Details_HasCorrectModelType_Dictionary()
+        {
+            ViewResult resultsView = new ClientController().Details(1) as ViewResult;
+            var result = resultsView.ViewData.Model;
+            Assert.IsInstanceOfType(result, typeof(Dictionary<object, object>));
+        }
+
+        [TestMethod]
+        public void CreateClientForm_ReturnsCorrectView_True()
+        {
+            ClientController controller = new ClientController();
+            ActionResult allView = controller.CreateClientForm(1);
+            Assert.IsInstanceOfType(allView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void CreateClientForm_HasCorrectModelType_Object()
+        {
+            ViewResult resultsView = new ClientController().CreateClientForm(1) as ViewResult;
+            var result = resultsView.ViewData.Model;
+            Assert.IsInstanceOfType(result, typeof(object));
+        }
+
+        [TestMethod]
+        public void AddForm_ReturnsCorrectView_True()
+        {
+            ClientController controller = new ClientController();
+            ActionResult allView = controller.AddForm();
+            Assert.IsInstanceOfType(allView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void AddForm_HasCorrectModelType_List()
+        {
+            ViewResult resultsView = new ClientController().AddForm() as ViewResult;
+            var result = resultsView.ViewData.Model;
+            Assert.IsInstanceOfType(result, typeof(List<Stylist>));
+        }
+
+        [TestMethod]
+        public void EditForm_ReturnsCorrectView_True()
+        {
+            ClientController controller = new ClientController();
+            ActionResult allView = controller.EditForm(1);
+            Assert.IsInstanceOfType(allView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void EditForm_HasCorrectModelType_Dictionary()
+        {
+            ViewResult resultsView = new ClientController().EditForm(1) as ViewResult;
+            var result = resultsView.ViewData.Model;
+            Assert.IsInstanceOfType(result, typeof(Dictionary<object, object>));
+        }
     }
 }
