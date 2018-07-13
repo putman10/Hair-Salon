@@ -11,6 +11,11 @@ namespace HairSalon.Controllers
 {
     public class ClientController : Controller
     {
+        [HttpGet("/clients")]
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         [HttpGet("/stylists/{stylistId}/clients/{clientId}")]
         public ActionResult ClientByStylist(int stylistId, int clientId)

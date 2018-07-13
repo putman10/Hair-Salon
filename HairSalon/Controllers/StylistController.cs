@@ -21,7 +21,7 @@ namespace HairSalon.Controllers
         public ActionResult AllStylists()
         {
             List<Stylist> model = Stylist.GetAll();
-            return View(model);
+            return View("Index", model);
         }
 
         [HttpGet("/stylists/new")]

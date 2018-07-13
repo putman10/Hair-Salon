@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="container" id="add-container">
+    <h1>Enter your food item!</h1>
+    <form class="form" action="/food/add" method="post">
+        <div class="form-group">
+          <label for="name">Enter the name of the food</label>
+          <input type="text" name="name">
+        </div>
+        <div>
+            <label for="category">Choose a category</label>
+            <select class="form-group" name="category">
+
+               @foreach(var category in Model)
+                {
+                <option value="@category.GetId()">@category.GetName()</option>
+                }
+            </select>
+        </div>
+      <button type="submit" class="btn btn-primary" name="button">Add New Food</button>
+    </form>
+</div>
