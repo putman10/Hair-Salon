@@ -8,7 +8,13 @@
 <form action="/stylists/@Model.GetId()/edit" method="post">
     <label for="name">Name:</label>
     <input type="text" name="newname" value="@Model.GetName()">
+    <label for="stylist">Choose a Stylist:</label>
+    <select class="form-group" name="stylist">
+        @foreach(var stylist in Model)
+        {
+        <option value="@stylist.GetId()">@stylist.GetName()</option>
+        }
+    </select>
     <button type="submit">Edit</button>
 </form>
-<h4><a href="/">Return Home</a></h4>
  
