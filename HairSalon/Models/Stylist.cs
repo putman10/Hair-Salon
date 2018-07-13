@@ -9,11 +9,13 @@ namespace HairSalon.Models
     {
         private int _id;
         private string _name;
+        private string _description;
 
-        public Stylist(string name, int id = 0)
+        public Stylist(string name, string description, int id = 0)
         {
             _id = id;
             _name = name;
+            _description = description;
         }
 
         public override bool Equals(System.Object otherStylist)
@@ -25,7 +27,10 @@ namespace HairSalon.Models
             else
             {
                 Stylist newStylist = (Stylist)otherStylist;
-                return this.GetId().Equals(newStylist.GetId());
+                bool idEquality = (this.GetId().Equals(newStylist.GetId()));
+                bool nameEquality = (this.GetName() == newStylist.GetName());
+                bool descriptionEquality = (this.GetDescription() == newStylist.GetDescription());
+                return (idEquality && nameEquality && descriptionEquality);
             }
         }
         public override int GetHashCode()
@@ -40,6 +45,11 @@ namespace HairSalon.Models
         {
             return _name;
         }
+        
+        public string GetDescription()
+        {
+            return _description;
+        }
 
         public void Save()
         {
@@ -47,12 +57,17 @@ namespace HairSalon.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO stylists (name) VALUES (@name);";
+            cmd.CommandText = @"INSERT INTO stylists (name,description) VALUES (@name, @description);";
 
             MySqlParameter name = new MySqlParameter();
             name.ParameterName = "@name";
             name.Value = this._name;
             cmd.Parameters.Add(name);
+
+            MySqlParameter description = new MySqlParameter();
+            description.ParameterName = "@description";
+            description.Value = this._description;
+            cmd.Parameters.Add(description);
 
             cmd.ExecuteNonQuery();
             _id = (int)cmd.LastInsertedId;
@@ -76,7 +91,8 @@ namespace HairSalon.Models
             {
                 int StylistId = rdr.GetInt32(0);
                 string StylistName = rdr.GetString(1);
-                Stylist newStylist = new Stylist(StylistName, StylistId);
+                string StylistDescription = rdr.GetString(2);
+                Stylist newStylist = new Stylist(StylistName, StylistDescription, StylistId);
                 allStylists.Add(newStylist);
             }
             conn.Close();
@@ -102,13 +118,16 @@ namespace HairSalon.Models
             var rdr = cmd.ExecuteReader() as MySqlDataReader;
             int StylistId = 0;
             string StylistName = "";
+            string StylistDescription = "";
 
             while (rdr.Read())
             {
                 StylistId = rdr.GetInt32(0);
                 StylistName = rdr.GetString(1);
+                StylistDescription = rdr.GetString(2);
+
             }
-            Stylist newStylist = new Stylist(StylistName, StylistId);
+            Stylist newStylist = new Stylist(StylistName, StylistDescription, StylistId);
             conn.Close();
             if (conn != null)
             {
@@ -173,6 +192,7 @@ namespace HairSalon.Models
                 int clientId = rdr.GetInt32(0);
                 int clientStylistId = rdr.GetInt32(1);
                 string clientName = rdr.GetString(2);
+
                 Client newClient = new Client(clientId, clientStylistId, clientName);
                 allStylistClients.Add(newClient);
             }
@@ -184,12 +204,12 @@ namespace HairSalon.Models
             return allStylistClients;
         }
 
-        public void Edit(string newName)
+        public void Edit(string newName, string newDescription)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"UPDATE stylists SET name = @newName WHERE id = @thisId;";
+            cmd.CommandText = @"UPDATE stylists SET name = @newName, description = @newDescription WHERE id = @thisId;";
 
             MySqlParameter thisId = new MySqlParameter();
             thisId.ParameterName = "@thisId";
@@ -200,6 +220,11 @@ namespace HairSalon.Models
             name.ParameterName = "@newName";
             name.Value = newName;
             cmd.Parameters.Add(name);
+
+            MySqlParameter description = new MySqlParameter();
+            description.ParameterName = "@newDescription";
+            description.Value = newName;
+            cmd.Parameters.Add(description);
 
             cmd.ExecuteNonQuery();
             _name = newName;

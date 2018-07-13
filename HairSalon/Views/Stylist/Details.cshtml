@@ -2,20 +2,22 @@
     Layout = "_Layout";
 }
 <div class='container' id="stylist-container" =>
-    <h1>@Model["stylist"].GetName()'s Clients:</h1>
-<div class="row titles" =>
-    <div class="col-md-8">
-        <h4>Client Name</h4>
+    <h1>@Model["stylist"].GetName():</h1>
+    <p>@Model["stylist"].GetDescription()</p>
+    <h3>@Model["stylist"].GetName()'s Clients:</h3>
+    <div class="row titles" =>
+        <div class="col-md-8">
+            <h4>Client Name</h4>
+        </div>
+        <div class="col-md-2">
+            <h4>Edit</h4>
+        </div>
+        <div class="col-md-2">
+            <h4>Delete</h4>
+        </div>
     </div>
-    <div class="col-md-2">
-        <h4>Edit</h4>
-    </div>
-    <div class="col-md-2">
-        <h4>Delete</h4>
-    </div>
-</div>
-@foreach (var client in Model["clients"])
-{
+    @foreach (var client in Model["clients"])
+    {
     <div class="row data">
         <div class="col-md-8">
             <p class="name">@client.GetName()</p>
@@ -27,5 +29,5 @@
             <form id="stylist" action="/client/@client.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
         </div>
     </div>
-}
+    }
 </div>

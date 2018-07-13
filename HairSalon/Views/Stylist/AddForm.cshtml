@@ -6,9 +6,13 @@
     <h1>Enter a new Stylist!</h1>
     <form class="form" action="/stylists/new" method="post">
         <div class="form-group">
-          <label for="name">Enter the name of the Stylist:</label>
-          <input type="text" name="name" required>
+            <label for="name">Enter the name of the Stylist:</label>
+            <input class="form-control" type="text" name="name" required>
         </div>
-      <button type="submit" class="btn btn-danger" name="button">Add New Stylist</button>
+        <div class="form-group">
+            <label for="description">Enter the description of the Stylist:</label>
+            <textarea class="form-control" rows="5" name="description" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-danger" name="button">Add New Stylist</button>
     </form>
 </div>

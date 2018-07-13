@@ -43,10 +43,10 @@ namespace HairSalon.Controllers
         }
 
         [HttpPost("/stylists/new")]
-        public ActionResult AddStylist(string name, int id)
+        public ActionResult AddStylist(string name, int id, string description)
         {
             id = 0;
-            Stylist newStylist = new Stylist(name, id);
+            Stylist newStylist = new Stylist(name, description, id);
             newStylist.Save();
             return RedirectToAction("Index");
         }
@@ -63,10 +63,10 @@ namespace HairSalon.Controllers
         }
 
         [HttpPost("/stylists/{id}/edit")]
-        public ActionResult EditStylist(int id, string newName)
+        public ActionResult EditStylist(int id, string newName, string newDescription)
         {
             Stylist thisStylist = Stylist.Find(id);
-            thisStylist.Edit(newName);
+            thisStylist.Edit(newName, newDescription);
             return RedirectToAction("Index");
         }
     }

@@ -46,7 +46,6 @@
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Stylist\AddForm.cshtml" />
     <None Include="Views\Stylist\Index.cshtml" />
-    <None Include="Views\Stylist\Details.cshtml" />
     <None Include="Views\Stylist\EditForm.cshtml" />
     <None Include="Views\Client\AddForm.cshtml" />
     <None Include="Views\Client\Details.cshtml" />
