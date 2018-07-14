@@ -34,8 +34,8 @@ namespace HairSalon.Tests.ModelsTests
         public void Equals_ReturnsTrueForSameName_Stylist()
         {
             //Arrange, Act
-            Stylist firstStylist = new Stylist("Rook Tyler");
-            Stylist secondStylist = new Stylist("Rook Tyler");
+            Stylist firstStylist = new Stylist("Rook Tyler", "Test Description");
+            Stylist secondStylist = new Stylist("Rook Tyler", "Test Description");
 
             //Assert
             Assert.AreEqual(firstStylist, secondStylist);
@@ -45,7 +45,7 @@ namespace HairSalon.Tests.ModelsTests
         public void Save_SavesStylistToDatabase_StylistList()
         {
             //Arrange
-            Stylist testStylist = new Stylist("Rook Tyler");
+            Stylist testStylist = new Stylist("Rook Tyler", "Test Description");
             testStylist.Save();
 
             //Act
@@ -61,7 +61,7 @@ namespace HairSalon.Tests.ModelsTests
         public void Save_DatabaseAssignsIdToStylist_Id()
         {
             //Arrange
-            Stylist testStylist = new Stylist("Rook Tyler");
+            Stylist testStylist = new Stylist("Rook Tyler", "Test Description");
             testStylist.Save();
 
             //Act
@@ -78,7 +78,7 @@ namespace HairSalon.Tests.ModelsTests
         public void Find_FindsStylistInDatabase_Stylist()
         {
             //Arrange
-            Stylist testStylist = new Stylist("Rook Tyler");
+            Stylist testStylist = new Stylist("Rook Tyler", "Test Description");
             testStylist.Save();
 
             //Act
@@ -91,7 +91,7 @@ namespace HairSalon.Tests.ModelsTests
         [TestMethod]
         public void GetClients_RetrievesAllClientsWithStylist_ClientList()
         {
-            Stylist testStylist = new Stylist("Rook Tyler");
+            Stylist testStylist = new Stylist("Rook Tyler", "Test Description");
             testStylist.Save();
             int id = 0;
 
