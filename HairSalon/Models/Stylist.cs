@@ -209,7 +209,7 @@ namespace HairSalon.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"UPDATE stylists SET name = @newName, description = @newDescription WHERE id = @thisId;";
+            cmd.CommandText = @"UPDATE stylists SET Name = @newName, Description= @newDescription WHERE Id = @thisId;";
 
             MySqlParameter thisId = new MySqlParameter();
             thisId.ParameterName = "@thisId";
@@ -223,7 +223,7 @@ namespace HairSalon.Models
 
             MySqlParameter description = new MySqlParameter();
             description.ParameterName = "@newDescription";
-            description.Value = newName;
+            description.Value = newDescription;
             cmd.Parameters.Add(description);
 
             cmd.ExecuteNonQuery();
