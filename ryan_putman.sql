@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2018 at 11:14 PM
+-- Generation Time: Jul 13, 2018 at 11:59 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -58,19 +58,22 @@ INSERT INTO `clients` (`Id`, `Stylist_Id`, `Name`) VALUES
 
 CREATE TABLE `stylists` (
   `Id` bigint(20) UNSIGNED NOT NULL,
-  `Name` varchar(255) NOT NULL
+  `Name` varchar(255) NOT NULL,
+  `Description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `stylists`
 --
 
-INSERT INTO `stylists` (`Id`, `Name`) VALUES
-(8, 'Jonathon Grimes'),
-(9, 'Steven Sideran'),
-(10, 'Kevin Red'),
-(11, 'Emma Porter'),
-(12, 'Stephanie Smith');
+INSERT INTO `stylists` (`Id`, `Name`, `Description`) VALUES
+(8, 'Jonathon Grimes', 'Jonathon Grimes'),
+(9, 'Steven Sideran', 'Test Description for all Stylists.'),
+(10, 'Kevin Red', 'Test Description for all Stylists.'),
+(11, 'Emma Porter', 'Test Description for all Stylists.'),
+(12, 'Stephanie Smith', 'Test Description for all Stylists.'),
+(13, 'Apple', 'This is a time for me to shine'),
+(14, 'fasdfasdfasf', 'fasdfasdfasf');
 
 --
 -- Indexes for dumped tables
@@ -104,7 +107,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `stylists`
 --
 ALTER TABLE `stylists`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

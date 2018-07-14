@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2018 at 11:15 PM
+-- Generation Time: Jul 13, 2018 at 11:59 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -42,7 +42,8 @@ CREATE TABLE `clients` (
 
 CREATE TABLE `stylists` (
   `Id` bigint(20) UNSIGNED NOT NULL,
-  `Name` varchar(255) NOT NULL
+  `Name` varchar(255) NOT NULL,
+  `Description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
