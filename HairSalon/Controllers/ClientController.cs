@@ -58,15 +58,15 @@ namespace HairSalon.Controllers
         [HttpGet("/clients/new")]
         public ActionResult AddForm()
         {
-            List<Stylist> results = Stylist.GetAll();
-            return View(results);;
+            ViewBag.results = Stylist.GetAll();
+            return View();;
         }
 
         [HttpPost("/clients/new")]
-        public ActionResult AddClient(int stylist, string name)
+        public ActionResult AddClient(Client client)
         {
             int id = 0;
-            Client newClient = new Client(id, stylist, name);
+            Client newClient = new Client(id, client.stylistId, client.name);
             newClient.Save();
             return RedirectToAction("Index");
         }

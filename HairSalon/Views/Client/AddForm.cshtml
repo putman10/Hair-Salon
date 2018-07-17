@@ -1,6 +1,8 @@
 ﻿@{
     Layout = "_Layout";
 }
+@using HairSalon.Models
+
 
 <div class="container" id="add-container">
     <h1>Enter a new Client!</h1>
@@ -8,11 +10,13 @@
         <div class="form-group">
             <label for="name">Enter the name of the Client:</label>
             <input class="form-control" type="text" name="name" required>
+            <input value="0" type="hidden" name="id" >
+
         </div>
         <div>
             <label for="stylist">Choose a Stylist:</label>
-            <select class="form-group" name="stylist" required>
-                @foreach(var stylist in Model)
+            <select class="form-group" name="_stylistId" required>
+                @foreach(var stylist in ViewBag.results)
                 {
                 <option value="@stylist.GetId()">@stylist.GetName()</option>
                 }
