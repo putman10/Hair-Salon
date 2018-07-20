@@ -106,5 +106,19 @@ namespace HairSalon.Tests.ModelsTests
 
             CollectionAssert.AreEqual(testClientList, resultClientList);
         }
+
+        [TestMethod]
+        public void Find_FindsLastAddedStylistId_Id()
+        {
+            //Arrange
+            Stylist testStylist = new Stylist("Rook Tyler", "Test Description");
+            testStylist.Save();
+
+            //Act
+            int foundStylist = Stylist.FindLastAdded();
+
+            //Assert
+            Assert.AreEqual(testStylist.GetId(), foundStylist);
+        }
     }
 }
