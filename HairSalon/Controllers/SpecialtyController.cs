@@ -18,6 +18,19 @@ namespace HairSalon.Controllers
             return View(model);
         }
 
+        [HttpGet("/specialties/{id}")]
+        public ActionResult Details(int id)
+        {
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Specialty foundSpecialty = Specialty.Find(id);
+            List<Stylist> allStylistsWithSpecificSpecialty = Stylist.GetAllStylistsWithSpecialty(id);
+            model.Add("foundSpecialty", foundSpecialty);
+            model.Add("allStylists", allStylistsWithSpecificSpecialty);
+
+
+            return View(model);
+        }
+
         [HttpGet("/stylists/{id}/specialties/new")]
         public ActionResult CreateSpecialtyForm(int id)
         {

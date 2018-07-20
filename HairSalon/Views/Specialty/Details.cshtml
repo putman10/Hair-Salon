@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_Layout";
+}
+<div class='container' id="stylist-container" =>
+    <h1>@Model["foundSpecialty"].name:</h1>
+    <h3>Edit Stylists with @Model["foundSpecialty"].name as a Specialty:</h3>
+    @foreach (var stylist in Model["allStylists"])
+    {
+        <div class="row data">
+            <div class="col-md-8">
+                <p class="name">@stylist.GetName()</p>
+            </div>
+            <div class="col-md-2">
+                <p><a class="btn btn-danger" href="/stylists/@stylist.GetId()/edit">Edit</a></p>
+            </div>
+            <div class="col-md-2">
+                <form id="stylist" action="/stylists/@stylist.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
+            </div>
+        </div>
+    }
+    </br>
+    <form class="inline-block" action="/stylists/@Model["foundSpecialty"].id/delete" method="post"><button type="submit" class="btn btn-warning">Delete @Model["foundSpecialty"].name</button></form>
+
+</div>
