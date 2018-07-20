@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2018 at 11:59 PM
+-- Generation Time: Jul 20, 2018 at 10:43 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -37,6 +37,29 @@ CREATE TABLE `clients` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `specialties`
+--
+
+CREATE TABLE `specialties` (
+  `Id` int(11) NOT NULL,
+  `Name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `specialties_stylists`
+--
+
+CREATE TABLE `specialties_stylists` (
+  `Id` int(11) NOT NULL,
+  `specialties_id` int(11) NOT NULL,
+  `stylists_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `stylists`
 --
 
@@ -58,6 +81,18 @@ ALTER TABLE `clients`
   ADD UNIQUE KEY `Id` (`Id`);
 
 --
+-- Indexes for table `specialties`
+--
+ALTER TABLE `specialties`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `specialties_stylists`
+--
+ALTER TABLE `specialties_stylists`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `stylists`
 --
 ALTER TABLE `stylists`
@@ -72,13 +107,25 @@ ALTER TABLE `stylists`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT for table `specialties`
+--
+ALTER TABLE `specialties`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+
+--
+-- AUTO_INCREMENT for table `specialties_stylists`
+--
+ALTER TABLE `specialties_stylists`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `stylists`
 --
 ALTER TABLE `stylists`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

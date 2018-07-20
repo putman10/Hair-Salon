@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2018 at 11:59 PM
+-- Generation Time: Jul 20, 2018 at 10:42 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -39,16 +39,46 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`Id`, `Stylist_Id`, `Name`) VALUES
-(15, 8, 'Jennifer Lopez'),
-(16, 11, 'Redmond Local'),
-(17, 12, 'Volk Sinyo'),
-(18, 10, 'Belkin Long'),
-(19, 12, 'Dependent Ben'),
-(20, 11, 'Nom Mante'),
-(21, 10, 'Beer Mac'),
-(22, 10, 'Selena Gomez'),
-(23, 9, 'Taylor Swift'),
-(24, 8, 'Gizmo Putman');
+(36, 27, 'Client #1'),
+(37, 28, 'Client #2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `specialties`
+--
+
+CREATE TABLE `specialties` (
+  `Id` int(11) NOT NULL,
+  `Name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `specialties`
+--
+
+INSERT INTO `specialties` (`Id`, `Name`) VALUES
+(58, 'Curly Hair'),
+(59, 'Red Hair');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `specialties_stylists`
+--
+
+CREATE TABLE `specialties_stylists` (
+  `Id` int(11) NOT NULL,
+  `specialties_id` int(11) NOT NULL,
+  `stylists_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `specialties_stylists`
+--
+
+INSERT INTO `specialties_stylists` (`Id`, `specialties_id`, `stylists_id`) VALUES
+(44, 59, 27);
 
 -- --------------------------------------------------------
 
@@ -67,13 +97,7 @@ CREATE TABLE `stylists` (
 --
 
 INSERT INTO `stylists` (`Id`, `Name`, `Description`) VALUES
-(8, 'Jonathon Grimes', 'Jonathon Grimes'),
-(9, 'Steven Sideran', 'Test Description for all Stylists.'),
-(10, 'Kevin Red', 'Test Description for all Stylists.'),
-(11, 'Emma Porter', 'Test Description for all Stylists.'),
-(12, 'Stephanie Smith', 'Test Description for all Stylists.'),
-(13, 'Apple', 'This is a time for me to shine'),
-(14, 'fasdfasdfasf', 'fasdfasdfasf');
+(27, 'Barber #1', 'This description is a placeholder for Background info');
 
 --
 -- Indexes for dumped tables
@@ -85,6 +109,18 @@ INSERT INTO `stylists` (`Id`, `Name`, `Description`) VALUES
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `Id` (`Id`);
+
+--
+-- Indexes for table `specialties`
+--
+ALTER TABLE `specialties`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `specialties_stylists`
+--
+ALTER TABLE `specialties_stylists`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `stylists`
@@ -101,13 +137,25 @@ ALTER TABLE `stylists`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `specialties`
+--
+ALTER TABLE `specialties`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
+-- AUTO_INCREMENT for table `specialties_stylists`
+--
+ALTER TABLE `specialties_stylists`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `stylists`
 --
 ALTER TABLE `stylists`
-  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

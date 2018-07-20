@@ -37,22 +37,6 @@ namespace HairSalon.Tests.ControllerTests
             Assert.IsInstanceOfType(result, typeof(List<Specialty>));
         }
 
-        //[TestMethod]
-        //public void ClientByStylist_ReturnsCorrectView_True()
-        //{
-        //    ClientController controller = new ClientController();
-        //    ActionResult allView = controller.Index();
-        //    Assert.IsInstanceOfType(allView, typeof(ViewResult));
-        //}
-
-        //[TestMethod]
-        //public void ClientByStylist_HasCorrectModelType_Dictionary()
-        //{
-        //    ViewResult resultsView = new ClientController().ClientByStylist(1, 2) as ViewResult;
-        //    var result = resultsView.ViewData.Model;
-        //    Assert.IsInstanceOfType(result, typeof(Dictionary<object, object>));
-        //}
-
         [TestMethod]
         public void Details_ReturnsCorrectView_True()
         {
