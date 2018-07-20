@@ -8,7 +8,7 @@ using HairSalon.Models;
 namespace HairSalon.Tests.ControllerTests
 {
     [TestClass]
-    public class StylistControllerTests : IDisposable
+    public class SpecialtyControllerTests : IDisposable
     {
         public void Dispose()
         {
@@ -16,15 +16,15 @@ namespace HairSalon.Tests.ControllerTests
             Client.DeleteAll();
             Specialty.DeleteAll();
         }
-        public StylistControllerTests()
+        public SpecialtyControllerTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=ryan_putman_test;";
         }
- 
+
         [TestMethod]
         public void Index_ReturnsCorrectView_True()
         {
-            StylistController controller = new StylistController();
+            SpecialtyController controller = new SpecialtyController();
             ActionResult allView = controller.Index();
             Assert.IsInstanceOfType(allView, typeof(ViewResult));
         }
@@ -32,15 +32,31 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void Index_HasCorrectModelType_List()
         {
-            ViewResult resultsView = new StylistController().Index() as ViewResult;
+            ViewResult resultsView = new SpecialtyController().Index() as ViewResult;
             var result = resultsView.ViewData.Model;
-            Assert.IsInstanceOfType(result, typeof(List<Stylist>));
+            Assert.IsInstanceOfType(result, typeof(List<Specialty>));
         }
+
+        //[TestMethod]
+        //public void ClientByStylist_ReturnsCorrectView_True()
+        //{
+        //    ClientController controller = new ClientController();
+        //    ActionResult allView = controller.Index();
+        //    Assert.IsInstanceOfType(allView, typeof(ViewResult));
+        //}
+
+        //[TestMethod]
+        //public void ClientByStylist_HasCorrectModelType_Dictionary()
+        //{
+        //    ViewResult resultsView = new ClientController().ClientByStylist(1, 2) as ViewResult;
+        //    var result = resultsView.ViewData.Model;
+        //    Assert.IsInstanceOfType(result, typeof(Dictionary<object, object>));
+        //}
 
         [TestMethod]
         public void Details_ReturnsCorrectView_True()
         {
-            StylistController controller = new StylistController();
+            SpecialtyController controller = new SpecialtyController();
             ActionResult allView = controller.Details(1);
             Assert.IsInstanceOfType(allView, typeof(ViewResult));
         }
@@ -48,7 +64,7 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void Details_HasCorrectModelType_Dictionary()
         {
-            ViewResult resultsView = new StylistController().Details(3) as ViewResult;
+            ViewResult resultsView = new SpecialtyController().Details(1) as ViewResult;
             var result = resultsView.ViewData.Model;
             Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
         }
@@ -56,15 +72,23 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void AddForm_ReturnsCorrectView_True()
         {
-            StylistController controller = new StylistController();
+            SpecialtyController controller = new SpecialtyController();
             ActionResult allView = controller.AddForm();
             Assert.IsInstanceOfType(allView, typeof(ViewResult));
         }
 
         [TestMethod]
+        public void AddForm_HasCorrectModelType_Object()
+        {
+            ViewResult resultsView = new SpecialtyController().AddForm() as ViewResult;
+            var result = resultsView.ViewData.Model;
+            Assert.IsInstanceOfType(result, typeof(List<Specialty>));
+        }
+
+        [TestMethod]
         public void EditForm_ReturnsCorrectView_True()
         {
-            StylistController controller = new StylistController();
+            SpecialtyController controller = new SpecialtyController();
             ActionResult allView = controller.EditForm(1);
             Assert.IsInstanceOfType(allView, typeof(ViewResult));
         }
@@ -72,10 +96,9 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void EditForm_HasCorrectModelType_Dictionary()
         {
-            ViewResult resultsView = new StylistController().EditForm(3) as ViewResult;
+            ViewResult resultsView = new SpecialtyController().EditForm(1) as ViewResult;
             var result = resultsView.ViewData.Model;
-            Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
+            Assert.IsInstanceOfType(result, typeof(Specialty));
         }
-
     }
 }

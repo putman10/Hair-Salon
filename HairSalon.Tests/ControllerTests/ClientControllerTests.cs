@@ -12,7 +12,13 @@ namespace HairSalon.Tests.ControllerTests
     {
         public void Dispose()
         {
+            Stylist.DeleteAll();
             Client.DeleteAll();
+            Specialty.DeleteAll();
+        }
+        public ClientControllerTests()
+        {
+            DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=ryan_putman_test;";
         }
 
         [TestMethod]

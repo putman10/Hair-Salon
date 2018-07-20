@@ -31,13 +31,6 @@ namespace HairSalon.Controllers
             return View(model);
         }
 
-        [HttpGet("/stylists/{id}/specialties/new")]
-        public ActionResult CreateSpecialtyForm(int id)
-        {
-            Specialty model = Specialty.Find(id);
-            return View(model);
-        }
-
         [HttpGet("/specialties/new")]
         public ActionResult AddForm()
         {
@@ -69,13 +62,13 @@ namespace HairSalon.Controllers
         }
 
         [HttpGet("/specialties/{id}/edit")]
-        public IActionResult EditForm(int id)
+        public ActionResult EditForm(int id)
         {
             return View(Specialty.Find(id));
         }
 
         [HttpPost("/specialties/{id}/edit")]
-        public IActionResult EditSpecialty(int id, string newName)
+        public ActionResult EditSpecialty(int id, string newName)
         {
             Specialty.Edit(newName, id);
             return RedirectToAction("Index");
