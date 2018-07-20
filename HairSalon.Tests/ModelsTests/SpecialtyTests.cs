@@ -10,9 +10,11 @@ namespace HairSalon.Tests.ModelsTests
     {
         public void Dispose()
         {
+            Stylist.DeleteAll();
+            Client.DeleteAll();
             Specialty.DeleteAll();
         }
-        public void SpecialtyDBTest()
+        public SpecialtyTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=ryan_putman_test;";
         }
@@ -88,6 +90,17 @@ namespace HairSalon.Tests.ModelsTests
             int testId = testSpecialty.id;
 
             Assert.AreEqual(testId, result);
+        }
+
+        [TestMethod]
+        public void Get_GetAllCurrentSpecialties_List()
+        {
+            int[] arr1 = new int[]{3,4};
+            Specialty.CreateSpecialtyStylistPairing(1, arr1);
+
+            List<Specialty> test = Specialty.GetAllCurrentSpecialties(1);
+
+            Assert.AreEqual(4, test);
         }
 
     }

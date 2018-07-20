@@ -4,6 +4,22 @@
 <div class='container' id="stylist-container" =>
     <h1>@Model["stylist"].GetName():</h1>
     <p>@Model["stylist"].GetDescription()</p>
+    <h3>Edit @Model["stylist"].GetName()'s Current Specialties:</h3>
+    @foreach (var specialty in Model["currentSpecialties"])
+    {
+        <div class="row data">
+            <div class="col-md-8">
+                <p class="name">@specialty.name</p>
+            </div>
+            <div class="col-md-2">
+                <p><a class="btn btn-danger" href="/specialties/@specialty.id/edit">Edit</a></p>
+            </div>
+            <div class="col-md-2">
+                <form id="stylist" action="/specialties/@specialty.id/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
+            </div>
+        </div>
+    }
+    </br>
     <h3>@Model["stylist"].GetName()'s Clients:</h3>
     <div class="row titles" =>
         <div class="col-md-8">
@@ -18,16 +34,18 @@
     </div>
     @foreach (var client in Model["clients"])
     {
-    <div class="row data">
-        <div class="col-md-8">
-            <p class="name">@client.GetName()</p>
+        <div class="row data">
+            <div class="col-md-8">
+                <p class="name">@client.GetName()</p>
+            </div>
+            <div class="col-md-2">
+                <p><a class="btn btn-danger" href="/clients/@client.GetId()/edit">Edit</a></p>
+            </div>
+            <div class="col-md-2">
+                <form id="stylist" action="/client/@client.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
+            </div>
         </div>
-        <div class="col-md-2">
-            <p><a class="btn btn-danger" href="/clients/@client.GetId()/edit">Edit</a></p>
-        </div>
-        <div class="col-md-2">
-            <form id="stylist" action="/client/@client.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
-        </div>
-    </div>
     }
+    <form class="inline-block" action="/stylists/@Model["stylist"].GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete @Model["stylist"].GetName()</button></form>
+
 </div>
