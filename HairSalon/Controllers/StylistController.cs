@@ -78,7 +78,7 @@ namespace HairSalon.Controllers
             model.Add("stylist", thisStylist);
             model.Add("clients", stylistClients);
             model.Add("unusedSpecialties", unusedSpecialties);
-            model.Add("currentSpecialties", unusedSpecialties);
+            model.Add("currentSpecialties", currentSpecialties);
 
             return View(model);
         }

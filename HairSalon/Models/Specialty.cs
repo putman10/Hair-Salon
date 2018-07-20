@@ -113,15 +113,15 @@ namespace HairSalon.Models
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
 
-            cmd.CommandText = @"SELECT * FROM specialties JOIN specialties_stylists on(specialties.Id = specialties_stylists.specialties_id) WHERE specialties_stylists.stylists_id = @StylistId;";
+            cmd.CommandText = @"SELECT * FROM specialties RIGHT JOIN specialties_stylists on(specialties.Id = specialties_stylists.specialties_id) WHERE specialties_stylists.stylists_id = @StylistId;";
 
             cmd.Parameters.AddWithValue("@StylistId", stylistId);
 
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())
             {
-                int Id = rdr.GetInt32(4);
-                string Name = rdr.GetString(5);
+                int Id = rdr.GetInt32(0);
+                string Name = rdr.GetString(1);
                 Specialty newSpecialty = new Specialty(Name, Id);
                 allSpecialties.Add(newSpecialty);
             }
