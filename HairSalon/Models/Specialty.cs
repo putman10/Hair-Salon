@@ -79,6 +79,33 @@ namespace HairSalon.Models
             return allSpecialties;
         }
 
+        public static List<Specialty> GetAllExceptCurrent(int stylistId)
+        {
+            List<Specialty> allSpecialties = new List<Specialty> { };
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+
+            cmd.CommandText = @"SELECT * FROM specialties;";
+
+            cmd.Parameters.AddWithValue("@StylistID", stylistId);
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int Id = rdr.GetInt32(0);
+                string Name = rdr.GetString(1);
+                Specialty newClient = new Specialty(Name, Id);
+                allSpecialties.Add(newClient);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return allSpecialties;
+        }
+
         public static Specialty Find(int id)
         {
             MySqlConnection conn = DB.Connection();

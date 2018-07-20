@@ -72,7 +72,7 @@ namespace HairSalon.Controllers
         {
             Dictionary<string, object> model = new Dictionary<string, object>();
             Stylist thisStylist = Stylist.Find(id);
-            List<Specialty> allSpecialties = Specialty.GetAll();
+            List<Specialty> allSpecialties = Specialty.GetAllExceptCurrent(id);
             List<Client> stylistClients = thisStylist.GetClients();
             model.Add("stylist", thisStylist);
             model.Add("clients", stylistClients);
