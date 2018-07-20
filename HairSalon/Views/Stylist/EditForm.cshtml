@@ -6,17 +6,17 @@
 <h2>@Model["stylist"].GetName():</h2>
 <form class="edit-client" action="/stylists/@Model["stylist"].GetId()/edit" method="post">
     <div class="form-group">
-        <label for="newname">Name:</label>
+        <label for="newname">Edit Name of Stylist:</label>
         <input class="form-control" type="text" name="newname" value="@Model["stylist"].GetName()" required>
     </div>
     <div class="form-group">
-        <label for="newdescription">Name:</label>
+        <label for="newdescription">Edit background information on Stylist:</label>
         <input class="form-control" type="text" value="@Model["stylist"].GetDescription()" name="newdescription" required>
     </div>
     <button class="btn btn-danger" type="submit">Save Edit</button>
 </form>
 <br />
-<h2>@Model["stylist"].GetName()'s Current Clients:</h2>
+<h3>Edit @Model["stylist"].GetName()'s Current Clients:</h3>
 @foreach (var client in Model["clients"])
 {
     <div class="row data">
@@ -31,4 +31,4 @@
         </div>
     </div>
 }
-<form class="inline-block" action="/stylists/@Model["stylist"].GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete Stylist</button></form>
+<form class="inline-block" action="/stylists/@Model["stylist"].GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete @Model["stylist"].GetName()</button></form>

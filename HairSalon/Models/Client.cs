@@ -8,9 +8,9 @@ namespace HairSalon.Models
 {
     public class Client
     {
-        private int _id;
-        private string _name;
-        private int _stylistId;
+        public int _id;
+        public string _name;
+        public int _stylistId;
 
 
         public Client(int id, int stylistId, string name)

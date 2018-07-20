@@ -22,10 +22,10 @@
                 <p class="name"><a href="/clients/@client.GetId()">@client.GetName()</a></p>
             </div>
             <div class="col-md-2">
-                <p><a class="btn btn-danger" href="/clients/@client.GetId()/edit">Edit</a></p>
+                <p><a class="btn btn-warning" href="/clients/@client.GetId()/edit">Edit</a></p>
             </div>
             <div class="col-md-2">
-                <form id="stylist" action="/clients/@client.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
+                <form id="stylist" action="/clients/@client.GetId()/delete" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
             </div>
         </div>
     }
