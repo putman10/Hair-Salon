@@ -4,3 +4,4 @@
                     e.preventDefault();
                     $('<input type="text" class="form-control" name="specialtyFields" /><br/>').appendTo($fields);
                 });
+});
