@@ -1,0 +1,12 @@
+﻿@{
+  Layout = "_Layout";
+}
+
+<h1>Update Specialty</h1>
+<form action="/specialties/@Model.id/edit" method="post">
+    <div class="form-group">
+        <label for="newName">Title</label>
+        <input type="text" class="form-control" value="@Model.name" name="newName" id="newName">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

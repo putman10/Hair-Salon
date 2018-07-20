@@ -40,5 +40,32 @@ namespace HairSalon.Controllers
             newSpecialty.Save();
             return RedirectToAction("Index");
         }
+
+        [HttpPost("/specialties/{id}/delete")]
+        public ActionResult DeleteClient(int id)
+        {
+            Specialty.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost("/specialties/all/delete")]
+        public ActionResult DeleteClient()
+        {
+            Specialty.DeleteAll();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("/specialties/{id}/edit")]
+        public IActionResult EditForm(int id)
+        {
+            return View(Specialty.Find(id));
+        }
+
+        [HttpPost("/specialties/{id}/edit")]
+        public IActionResult EditSpecialty(int id, string newName)
+        {
+            Specialty.Edit(newName, id);
+            return RedirectToAction("Index");
+        }
     }
 }
