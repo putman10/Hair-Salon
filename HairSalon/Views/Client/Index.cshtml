@@ -1,33 +1,36 @@
 ﻿@{
     Layout = "_Layout";
 }
- <div class='container' id="stylist-container"=>
-        <h1>All Clients</h1>
-     
-    <div class="row titles"=>
+<div class='container' id="stylist-container" =>
+    <h1>All Clients</h1>
+
+    <div class="row titles" =>
         <div class="col-md-8">
             <h4>Client's Name</h4>
         </div>
-         <div class="col-md-2">
+        <div class="col-md-2">
             <h4>Edit</h4>
         </div>
-         <div class="col-md-2">
+        <div class="col-md-2">
             <h4>Delete</h4>
         </div>
     </div>
-        @foreach(var client in Model)
-        {
+    @foreach (var client in Model)
+    {
         <div class="row data">
-        <div class="col-md-8">
-            <p class="name"><a href="/clients/@client.GetId()">@client.GetName()</a></p>
+            <div class="col-md-8">
+                <p class="name"><a href="/clients/@client.GetId()">@client.GetName()</a></p>
+            </div>
+            <div class="col-md-2">
+                <p><a class="btn btn-danger" href="/clients/@client.GetId()/edit">Edit</a></p>
+            </div>
+            <div class="col-md-2">
+                <form id="stylist" action="/clients/@client.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
+            </div>
         </div>
-         <div class="col-md-2">
-            <p><a class="btn btn-danger" href="/clients/@client.GetId()/edit">Edit</a></p>
-        </div>
-         <div class="col-md-2">
-            <form id="stylist" action="/clients/@client.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
-        </div>
-    </div>
-        }
+    }
+
+      <a href="/clients/new" class="btn btn-warning margtop">Add New Client</a>
+    <form id="delete-all-clients" action="/clients/all/delete" method="post"><button type="submit" class="btn btn-danger margtop">Delete All Clients</button></form>
 </div>
     
