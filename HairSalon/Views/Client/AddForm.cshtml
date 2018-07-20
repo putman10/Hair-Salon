@@ -11,7 +11,8 @@
         </div>
         <div>
             <label for="stylist">Choose a Stylist:</label>
-            <select class="form-group" name="stylist" required>
+            <select class="form-group" name="stylist" required oninvalid="this.setCustomValidity('You need to add a Stylist before you can add Clients')"
+ oninput="setCustomValidity('')">
                 @foreach(var stylist in Model)
                 {
                 <option value="@stylist.GetId()">@stylist.GetName()</option>
