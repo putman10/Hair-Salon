@@ -34,6 +34,8 @@
     <Content Remove="wwwroot\images\banner_4.jpg" />
     <Content Remove="wwwroot\images\banner_3.jpg" />
     <Content Remove="wwwroot\images\banner_2.jpg" />
+    <Content Remove="Views\Stylist\EditForm.cshtml" />
+    <Content Remove="Views\Stylist\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
