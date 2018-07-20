@@ -13,6 +13,22 @@
             <label for="description">Enter background information on the Stylist:</label>
             <input class="form-control" type="text" name="description" required>
         </div>
+        <h3>Add Specialties for this Stylist:</h3>
+        <div class="form-group">
+            <label for="specialties">Choose an existing Specialty or Specialties:</label>
+            <select multiple class="form-control" name="specialties">
+                @foreach(var specialty in Model)
+                {
+                <option value="@specialty.id">@specialty.name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="specialtyFields">Add new Specialties:</label>
+            <div id="fields"><input class="form-control" type="text" name="specialtyFields" /><br /></div>
+            <br />
+            <button type="button" class="btn btn-danger" id="btnAddField">Add another new specialty field</button>
+        </div>
         <button type="submit" class="btn btn-danger" name="button">Add New Stylist</button>
     </form>
 </div>

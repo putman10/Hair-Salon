@@ -46,15 +46,23 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists/new")]
         public ActionResult AddForm()
         {
-            return View();
+            return View(Specialty.GetAll());
         }
 
         [HttpPost("/stylists/new")]
-        public ActionResult AddStylist(string name, int id, string description)
+        public ActionResult AddStylist(string name, int id, string description, string[] specialtyFields, int[] specialties)
         {
             id = 0;
             Stylist newStylist = new Stylist(name, description, id);
             newStylist.Save();
+            Specialty.CreateSpecialtyStylistPairing(id, specialties);
+
+            if (!(specialtyFields[0] == null))
+            {
+                int[] listOfNewSpecialtiesIds = Specialty.SaveListOfSpecialties(specialtyFields);
+                Specialty.CreateSpecialtyStylistPairing(id, listOfNewSpecialtiesIds);
+            }
+
             return RedirectToAction("Index");
         }
 
