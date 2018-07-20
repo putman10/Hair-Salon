@@ -20,4 +20,7 @@
     <Folder Include="ControllerTests\" />
     <Folder Include="ModelsTests\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ModelsTests\EmptyCSharpFile.cs" />
+  </ItemGroup>
 </Project>

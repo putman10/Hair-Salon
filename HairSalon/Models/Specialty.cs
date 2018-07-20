@@ -17,6 +17,25 @@ namespace HairSalon.Models
             name = specialtyName;
         }
 
+        public override bool Equals(System.Object otherSpecialty)
+        {
+            if (!(otherSpecialty is Specialty))
+            {
+                return false;
+            }
+            else
+            {
+                Specialty newSpecialty = (Specialty)otherSpecialty;
+                bool idEquality = (this.id.Equals(newSpecialty.id));
+                bool nameEquality = (this.name == newSpecialty.name);
+                return (idEquality && nameEquality);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return this.id.GetHashCode();
+        }
+
         public void Save()
         {
             MySqlConnection conn = DB.Connection();
@@ -155,6 +174,23 @@ namespace HairSalon.Models
             }
 
             return specialtiesIds.ToArray();
+        }
+
+        public static void DeleteAll()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM specialties;";
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
         }
     }
 }
