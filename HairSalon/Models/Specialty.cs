@@ -86,7 +86,7 @@ namespace HairSalon.Models
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
 
-            cmd.CommandText = @"SELECT * FROM specialties;";
+            cmd.CommandText = @"SELECT * FROM specialties A LEFT JOIN specialties_stylists B on A.Id = B.specialties_id WHERE B.stylists_id IS NULL";
 
             cmd.Parameters.AddWithValue("@StylistID", stylistId);
 
