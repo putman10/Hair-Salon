@@ -19,6 +19,21 @@
         </div>
     }
     </br>
+    <h3>Add Stylists with a Specialty in @Model["foundSpecialty"].name:</h3>
+    <form class="inline-block" action="/specialties/@Model["foundSpecialty"].id/edit-stylists" method="post">
+        <div class="form-group">
+            <label for="stylists">Choose one or more existing Stylists to associate with Specialty:</label>
+            <select multiple class="form-control" name="stylists">
+                @foreach (var stylist in Model["otherStylists"])
+                {
+                    <option value="@stylist.GetId()">@stylist.GetName()</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Specialty to Stylist(s)</button>
+    </form>
+    <br>
+    </br>
     <form class="inline-block" action="/stylists/@Model["foundSpecialty"].id/delete" method="post"><button type="submit" class="btn btn-warning">Delete @Model["foundSpecialty"].name</button></form>
 
 </div>
