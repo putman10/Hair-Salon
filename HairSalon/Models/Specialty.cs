@@ -95,8 +95,35 @@ namespace HairSalon.Models
             {
                 int Id = rdr.GetInt32(0);
                 string Name = rdr.GetString(1);
-                Specialty newClient = new Specialty(Name, Id);
-                allSpecialties.Add(newClient);
+                Specialty newSpecialty = new Specialty(Name, Id);
+                allSpecialties.Add(newSpecialty);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return allSpecialties;
+        }
+
+        public static List<Specialty> GetAllCurrentSpecialties(int stylistId)
+        {
+            List<Specialty> allSpecialties = new List<Specialty> { };
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+
+            cmd.CommandText = @"SELECT * FROM specialties JOIN specialties_stylists on(specialties.Id = specialties_stylists.specialties_id) WHERE specialties_stylists.stylists_id = @StylistId;";
+
+            cmd.Parameters.AddWithValue("@StylistId", stylistId);
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int Id = rdr.GetInt32(4);
+                string Name = rdr.GetString(5);
+                Specialty newSpecialty = new Specialty(Name, Id);
+                allSpecialties.Add(newSpecialty);
             }
             conn.Close();
             if (conn != null)
