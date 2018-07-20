@@ -55,12 +55,13 @@ namespace HairSalon.Controllers
             id = 0;
             Stylist newStylist = new Stylist(name, description, id);
             newStylist.Save();
-            Specialty.CreateSpecialtyStylistPairing(id, specialties);
+            int stylistId = Stylist.FindLastAdded();
+            Specialty.CreateSpecialtyStylistPairing(stylistId, specialties);
 
             if (!(specialtyFields[0] == null))
             {
                 int[] listOfNewSpecialtiesIds = Specialty.SaveListOfSpecialties(specialtyFields);
-                Specialty.CreateSpecialtyStylistPairing(id, listOfNewSpecialtiesIds);
+                Specialty.CreateSpecialtyStylistPairing(stylistId, listOfNewSpecialtiesIds);
             }
 
             return RedirectToAction("Index");

@@ -237,5 +237,29 @@ namespace HairSalon.Models
 
         }
 
+        public static int FindLastAdded()
+        {
+            int lastAddedId = 0;
+
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM stylists ORDER BY ID DESC LIMIT 1";
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                lastAddedId = rdr.GetInt32(0);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return lastAddedId;
+        }
+
     }
 }
