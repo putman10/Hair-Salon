@@ -17,6 +17,16 @@ Create an app for a hair salon. The owner should be able to add a list of the st
 | As an employee, I need to be able to add new clients to a specific stylist. I should not be able to add a client if no stylists have been added | add new clients | client assigned stylist if stylists exist |
 | Client can be deleted from the system | delete client | click on delete button |
 
+* As an employee, I need to be able to add new clients to a specific stylist. I should not be able to add a client if no stylists have been added.
+* As an employee, I need to be able to delete stylists (all).
+* As an employee, I need to be able to delete clients (all).
+* As an employee, I need to be able to add a specialty and view all specialties that have been added.
+* As an employee, I need to be able to add a specialty to a stylist.
+* As an employee, I need to be able to click on a specialty and see all of the stylists that have that specialty.
+* As an employee, I need to see the stylist's specialties on the stylist's details page.
+* As an employee, I need to be able to add a stylist to a specialty.
+
+
 
 ## Setup on OSX
 
