@@ -24,7 +24,8 @@ namespace HairSalon.Controllers
             Dictionary<string, object> model = new Dictionary<string, object>();
             Specialty foundSpecialty = Specialty.Find(id);
             List<Stylist> allStylistsWithSpecificSpecialty = Stylist.GetAllStylistsWithSpecialty(id);
-            List<Stylist> allStylistsWithoutSpecificSpecialty = Stylist.GetAllStylistsWithoutSpecialty(id);
+            List<Stylist> allStylistsWithoutSpecificSpecialty = Stylist.GetAll().Except(Stylist.GetAllStylistsWithSpecialty(id)).ToList();
+
             model.Add("foundSpecialty", foundSpecialty);
             model.Add("allStylists", allStylistsWithSpecificSpecialty);
             model.Add("otherStylists", allStylistsWithoutSpecificSpecialty);
