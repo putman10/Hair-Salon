@@ -9,7 +9,7 @@
     {
         <div class="row data">
             <div class="col-md-8">
-                <p class="name">@specialty.name</p>
+                <p class="name"><a href="/specialties/@specialty.id">@specialty.name</a></p>
             </div>
             <div class="col-md-2">
                 <p><a class="btn btn-warning" href="/specialties/@specialty.id/edit">Edit</a></p>
@@ -36,7 +36,7 @@
     {
         <div class="row data">
             <div class="col-md-8">
-                <p class="name">@client.GetName()</p>
+                <p class="name"><a href="/clients/@client.GetId()">@client.GetName()</a></p>
             </div>
             <div class="col-md-2">
                 <p><a class="btn btn-warning" href="/clients/@client.GetId()/edit">Edit</a></p>
