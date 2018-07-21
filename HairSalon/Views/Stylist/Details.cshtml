@@ -12,10 +12,10 @@
                 <p class="name">@specialty.name</p>
             </div>
             <div class="col-md-2">
-                <p><a class="btn btn-danger" href="/specialties/@specialty.id/edit">Edit</a></p>
+                <p><a class="btn btn-warning" href="/specialties/@specialty.id/edit">Edit</a></p>
             </div>
             <div class="col-md-2">
-                <form id="stylist" action="/specialties/@specialty.id/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
+                <form id="stylist" action="/specialties/@specialty.id/delete" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
             </div>
         </div>
     }
@@ -39,13 +39,13 @@
                 <p class="name">@client.GetName()</p>
             </div>
             <div class="col-md-2">
-                <p><a class="btn btn-danger" href="/clients/@client.GetId()/edit">Edit</a></p>
+                <p><a class="btn btn-warning" href="/clients/@client.GetId()/edit">Edit</a></p>
             </div>
             <div class="col-md-2">
-                <form id="stylist" action="/client/@client.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
+                <form id="stylist" action="/client/@client.GetId()/delete" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
             </div>
         </div>
     }
-    <form class="inline-block" action="/stylists/@Model["stylist"].GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete @Model["stylist"].GetName()</button></form>
+    <form class="inline-block" action="/stylists/@Model["stylist"].GetId()/delete" method="post"><button type="submit" class="btn btn-danger">Delete @Model["stylist"].GetName()</button></form>
 
 </div>

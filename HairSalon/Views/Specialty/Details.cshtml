@@ -11,10 +11,10 @@
                 <p class="name">@stylist.GetName()</p>
             </div>
             <div class="col-md-2">
-                <p><a class="btn btn-danger" href="/stylists/@stylist.GetId()/edit">Edit</a></p>
+                <p><a class="btn btn-warning" href="/stylists/@stylist.GetId()/edit">Edit</a></p>
             </div>
             <div class="col-md-2">
-                <form id="stylist" action="/stylists/@stylist.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form>
+                <form id="stylist" action="/stylists/@stylist.GetId()/delete" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
             </div>
         </div>
     }
@@ -34,6 +34,6 @@
     </form>
     <br>
     </br>
-    <form class="inline-block" action="/stylists/@Model["foundSpecialty"].id/delete" method="post"><button type="submit" class="btn btn-warning">Delete @Model["foundSpecialty"].name</button></form>
+    <form class="inline-block" action="/stylists/@Model["foundSpecialty"].id/delete" method="post"><button type="submit" class="btn btn-danger">Delete @Model["foundSpecialty"].name</button></form>
 
 </div>
