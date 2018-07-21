@@ -297,7 +297,8 @@ namespace HairSalon.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM stylists RIGHT JOIN specialties_stylists on(stylists.Id = specialties_stylists.stylists_id) WHERE specialties_stylists.specialties_id <> @SpecialtyId;";
+            cmd.CommandText = @"SELECT * FROM stylists RIGHT JOIN specialties_stylists on(stylists.Id = specialties_stylists.stylists_id) WHERE specialties_stylists.specialties_id <> @SpecialtyId GROUP BY specialties_stylists.stylists_id;";
+
 
             cmd.Parameters.AddWithValue("@SpecialtyId", specialtyId);
 
